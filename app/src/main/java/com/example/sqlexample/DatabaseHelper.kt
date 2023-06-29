@@ -54,6 +54,18 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
 
         cursor.close()
         return noteList
-
     }
+    //UPDATE
+    fun updateData(note: Note) {
+        val db = writableDatabase
+        val updateQuery = "UPDATE note SET title='${note.title}', content='${note.content}' WHERE id = ${note.id};"
+        db.execSQL(updateQuery)
+    }
+    //DELETE
+    fun deleteData(id: Int) {
+        val db = writableDatabase
+        val deleteQuery = "DELETE FROM note WHERE id = $id"
+        db.execSQL(deleteQuery)
+    }
+
 }
