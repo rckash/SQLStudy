@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         databaseHelper = DatabaseHelper(this)
-
         viewData()
 
         binding.button.setOnClickListener {
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             update(id, title, content)
         }
         binding.buttonDelete.setOnClickListener {
-            val id = binding.etId.toString().toInt()
+            val id = binding.etId.text.toString().toInt()
             delete(id)
         }
 

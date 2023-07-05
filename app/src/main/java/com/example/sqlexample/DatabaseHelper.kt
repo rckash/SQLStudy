@@ -37,7 +37,7 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
         db.execSQL(sql, args)
     }
     //READ
-    fun getAllNotes():List<Note> {
+    fun getAllNotes():MutableList<Note> {
         val db = readableDatabase
 
         val cursor = db.rawQuery("SELECT * FROM note", null)
@@ -64,7 +64,7 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
     //DELETE
     fun deleteData(id: Int) {
         val db = writableDatabase
-        val deleteQuery = "DELETE FROM note WHERE id = $id"
+        val deleteQuery = "DELETE FROM note WHERE id = $id;"
         db.execSQL(deleteQuery)
     }
 
